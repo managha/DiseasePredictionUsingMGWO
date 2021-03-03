@@ -60,18 +60,20 @@ def gwoLoop(min_values, max_values,fitness_function):
             
             if fitness < alpha_score :
                 alpha_score = fitness
-                alpha = Positions[i]
+                alpha = Positions[i][:]
             if (fitness > alpha_score and fitness < beta_score):
                 beta_score = fitness
-                beta = Positions[i]
+                beta = Positions[i][:]
             if (fitness > alpha_score and fitness > beta_score and fitness < delta_score):
                 delta_score = fitness
-                delta = Positions[i]
+                delta = Positions[i][:]
+
+
         
         a = 2 - l * ((2) / Max_iter) # a decreases linearly fron 2 to 0
+        print(alpha_score)
         
         # Update the Position of search agents including omegas
-        print(alpha_score)
         for i in range(0, SearchAgents_no):
             for j in range(0, dimension):
 
