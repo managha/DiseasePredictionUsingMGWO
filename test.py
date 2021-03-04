@@ -1,12 +1,14 @@
 import numpy as np
 import math
 import random
+import benchMarks
 
 Max_iter=10000
 SearchAgents_no=15
 dimension=2
 
 def initial_position(min_values, max_values, target_function):
+    
     position=[]
     for i in range(SearchAgents_no):
         pos=[0]*len(min_values)
@@ -37,9 +39,14 @@ def delta_position(min_values, max_values,target_function):
         delta[j] = random.uniform(min_values[j], max_values[j])
     return delta
 
-def gwoLoop(min_values, max_values,fitness_function):
+def gwoLoop(benchMarkObject):
+
+    min_values=benchMarkObject.min_values
+    max_values=benchMarkObject.max_values
+    fitness_function=benchMarkObject.fitness_function
     
     alpha    = alpha_position(min_values, max_values,target_function = fitness_function)
+    print("initial alpha score:",fitness_function(alpha))
     beta     = beta_position(min_values, max_values,target_function = fitness_function)
     delta    = delta_position(min_values, max_values,target_function = fitness_function)
     Positions = initial_position(min_values, max_values,target_function = fitness_function)
@@ -61,6 +68,7 @@ def gwoLoop(min_values, max_values,fitness_function):
             if fitness < alpha_score :
                 alpha_score = fitness
                 alpha = Positions[i][:]
+                print("iteration ",l,": new alpha found:",alpha_score)
             if (fitness > alpha_score and fitness < beta_score):
                 beta_score = fitness
                 beta = Positions[i][:]
@@ -70,8 +78,7 @@ def gwoLoop(min_values, max_values,fitness_function):
 
 
         
-        a = 2 - l * ((2) / Max_iter) # a decreases linearly fron 2 to 0
-        print(alpha_score)
+        a = 2 - 2 * ((l / Max_iter)**2) # a decreases linearly fron 2 to 0
         
         # Update the Position of search agents including omegas
         for i in range(0, SearchAgents_no):
@@ -113,7 +120,7 @@ def gwoLoop(min_values, max_values,fitness_function):
                 x=(X1 + X2 + X3)/3
                         
                 Positions[i][j]=x
-    return alpha_score
+    print("final optimized value: ",alpha_score)
 
 
 #Minima ->  f(x1, x2) = -1.0316; x1 = 0.0898, x2 = -0.7126 or x1 = -0.0898, x2 = 0.7126
@@ -149,5 +156,16 @@ beale_min=[-4.5,-4.5]
 beale_max=[4.5,4.5]
 
 
-print(gwoLoop(eggHolder_min,eggHolder_max,eggHolder))
+def get_func_val(self, variables):
+        tmp1 = 10 * self.variable_num
+        tmp2 = 0
+        for i in range(self.variable_num):
+            tmp2 += np.power(variables[i],2)-10*np.cos(2*np.pi*variables[i])
+        return tmp1+tmp2
 
+
+
+
+gwoLoop(benchMarks.Rastrigin())
+
+# print(benchMarks.Rastrigin().fitness_function([0,0]))
