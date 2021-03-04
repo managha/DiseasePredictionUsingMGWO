@@ -2,7 +2,7 @@ import numpy as np
 import math
 import random
 
-Max_iter=700
+Max_iter=10000
 SearchAgents_no=15
 dimension=2
 
@@ -81,6 +81,8 @@ def gwoLoop(min_values, max_values,fitness_function):
                 r2 = random.random()  # r2 is a random number in [0,1]
 
                 A1 = 2 * a * r1 - a
+                if A1<0:
+                    A1=2*2*r1-2
                 C1 = 2 * r2
                 
                 D_alpha = abs(C1 * alpha[j] - Positions[i][j])
@@ -90,6 +92,8 @@ def gwoLoop(min_values, max_values,fitness_function):
                 r2 = random.random()
 
                 A2 = 2 * a * r1 - a
+                if A2<0:
+                    A2=2*2*r1-2
                 C2 = 2 * r2
         
                 D_beta = abs(C2 * beta[j] - Positions[i][j])
@@ -99,6 +103,8 @@ def gwoLoop(min_values, max_values,fitness_function):
                 r2 = random.random()
 
                 A3 = 2 * a * r1 - a
+                if A3<0:
+                    A3=2*2*r1-2
                 C3 = 2 * r2
                 
                 D_delta = abs(C3 * delta[j] - Positions[i][j])
