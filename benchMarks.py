@@ -20,15 +20,14 @@ class Rastrigin:
 
 # Minimum Value: f(0,0)=0
 class Ackley:
+    max_values = [32.768,32.768]
+    min_values = [-32.768,-32.768]
+    variable_num=2
     
-        max_values = [32.768,32.768]
-        min_values = [-32.768,-32.768]
-        variable_num=2
-     
-
+    
     def fitness_function(self, variables):
         tmp1 = 20.-20.*np.exp(-0.2*np.sqrt(1./self.variable_num*np.sum(np.square(variables))))
-        tmp2 = np.e-np.exp(1./self.variable_num*np.sum(np.cos(variables*2.*np.pi)))
+        tmp2 = np.e-np.exp(1./self.variable_num*np.sum(np.cos(list(map(lambda x:x*2.*np.pi,variables)))))
         return tmp1+tmp2
 
 
