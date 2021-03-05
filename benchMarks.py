@@ -18,6 +18,19 @@ class Rastrigin:
             tmp2 += np.power(variables[i],2)-10*np.cos(2*np.pi*variables[i])
         return tmp1+tmp2
 
+# Minimum Value: f(0,0)=0
+class Ackley:
+    
+        max_values = [32.768,32.768]
+        min_values = [-32.768,-32.768]
+        variable_num=2
+     
+
+    def get_func_val(self, variables):
+        tmp1 = 20.-20.*np.exp(-0.2*np.sqrt(1./self.variable_num*np.sum(np.square(variables))))
+        tmp2 = np.e-np.exp(1./self.variable_num*np.sum(np.cos(variables*2.*np.pi)))
+        return tmp1+tmp2
+
 
 # Function to be Minimized (Rosenbrocks Valley). Solution ->  f(x) = 0; xi = 1
 class RosenBrocksValley:
