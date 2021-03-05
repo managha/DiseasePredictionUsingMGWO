@@ -26,7 +26,7 @@ class Ackley:
         variable_num=2
      
 
-    def get_func_val(self, variables):
+    def fitness_function(self, variables):
         tmp1 = 20.-20.*np.exp(-0.2*np.sqrt(1./self.variable_num*np.sum(np.square(variables))))
         tmp2 = np.e-np.exp(1./self.variable_num*np.sum(np.cos(variables*2.*np.pi)))
         return tmp1+tmp2
