@@ -32,6 +32,7 @@ class Ackley:
         return tmp1+tmp2
 
 
+
 # Function to be Minimized (Rosenbrocks Valley). Solution ->  f(x) = 0; xi = 1
 class RosenBrocksValley:
     min_values=[-5,-5]
