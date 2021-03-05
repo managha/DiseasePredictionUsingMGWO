@@ -52,6 +52,17 @@ class Beale:
 	    return (1.5 - x[0] + x[0]*x[1])**2 + (2.25 - x[0] + x[0]*x[1]**2)**2 + (2.625 - x[0] + x[0]*x[1]**3)**2
 
 
+#Minimum value: f(0,-1)=3
+class GoldsteinPrice:
+
+    min_values=[-2,-2]
+    max_values=[2,2]
+
+    def fitness_function(self, variables):
+        tmp1 = (1+np.power(variables[0]+variables[1]+1,2)*(19-14*variables[0]+3*np.power(variables[0],2)-14*variables[1]+6*variables[0]*variables[1]+3*np.power(variables[1],2)))
+        tmp2 = (30+(np.power(2*variables[0]-3*variables[1],2)*(18-32*variables[0]+12*np.power(variables[0],2)+48*variables[1]-36*variables[0]*variables[1]+27*np.power(variables[1],2))))
+        return tmp1*tmp2
+
 
 #Minima ->  f(x, y) = -959.6407; x=512, y=404.2319
 class EggHolder:
