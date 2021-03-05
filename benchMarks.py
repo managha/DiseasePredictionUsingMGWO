@@ -118,6 +118,25 @@ class LeviN13:
         tmp3 = np.power(variables[1]-1,2)*(1+np.power(np.sin(2*np.pi*variables[1]),2))
         return tmp1+tmp2+tmp3
 
+# Minimum value: f(0,0)=0
+class ThreeHumpCamel:
+
+    max_values = np.array([5.]*2)
+    min_values = np.array([-5.]*2)
+
+    def fitness_function(self, variables):
+        return 2*np.power(variables[0],2)-1.05*np.power(variables[0],4)+np.power(variables[0],6)/6+variables[0]*variables[1]+np.power(variables[1],2)
+
+# Minimum value: f(pi,pi)=-1 pi=3.14
+class Easom:
+
+    max_values = np.array([100.]*2)
+    min_values = np.array([-100.]*2)
+
+    def fitness_function(self, variables):
+        return -1.0*np.cos(variables[0])*np.cos(variables[1])*np.exp(-(np.power(variables[0]-np.pi,2)+np.power(variables[1]-np.pi,2)))
+
+
 #Minima ->  f(x, y) = -959.6407; x=512, y=404.2319
 class EggHolder:
     min_values=[-512,-512]
@@ -138,6 +157,41 @@ class SixHumpCamelBack:
         func_value = 4*variables_values[0]**2 - 2.1*variables_values[0]**4 + (1/3)*variables_values[0]**6 + variables_values[0]*variables_values[1] - 4*variables_values[1]**2 + 4*variables_values[1]**4
         return func_value
 
+
+# Minimum value: f(-0.54719,-1.54719)=-1.9133
+class McCormick:
+
+    max_values = np.array([4.]*2)
+    min_values = np.array([-1.5,-3.])
+
+    def fitness_function(self, variables):
+        tmp1 = np.sin(variables[0]+variables[1])+np.power(variables[0]-variables[1],2)
+        tmp2 = -1.5*variables[0]+2.5*variables[1]+1
+        return tmp1+tmp2
+
+
+# Minimum value: f(0,0)=0
+class SchafferN2:
+
+    max_values = np.array([100.]*2)
+    min_values = np.array([-100]*2)
+
+    def fitness_function(self, variables):
+        tmp1 = np.power(np.sin(np.power(variables[0],2)-np.power(variables[1],2)),2)-0.5
+        tmp2 = np.power(1+0.001*(np.power(variables[0],2)+np.power(variables[1],2)),2)
+        return 0.5+tmp1/tmp2
+
+
+# Minimum value: f(0.,1.25313)=0.292579
+class SchafferN4:
+
+    max_values = np.array([100.]*2)
+    min_values = np.array([-100]*2)
+
+    def fitness_function(self, variables):
+        tmp1 = np.power(np.cos(np.sin(np.absolute(np.power(variables[0],2)-np.power(variables[1],2)))),2)-0.5
+        tmp2 = np.power(1+0.001*(np.power(variables[0],2)+np.power(variables[1],2)),2)
+        return 0.5+tmp1/tmp2
 
 
 
