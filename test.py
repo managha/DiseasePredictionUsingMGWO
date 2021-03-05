@@ -123,49 +123,8 @@ def gwoLoop(benchMarkObject):
     print("final optimized value: ",alpha_score)
 
 
-#Minima ->  f(x1, x2) = -1.0316; x1 = 0.0898, x2 = -0.7126 or x1 = -0.0898, x2 = 0.7126
-def six_hump_camel_back(variables_values):
-    func_value = 4*variables_values[0]**2 - 2.1*variables_values[0]**4 + (1/3)*variables_values[0]**6 + variables_values[0]*variables_values[1] - 4*variables_values[1]**2 + 4*variables_values[1]**4
-    return func_value
-
-six_hump_min=[-5,-5]
-six_hum_max=[5,5]
-
-#Minima ->  f(x, y) = -959.6407; x=512, y=404.2319
-def eggHolder(values):
-    x=values[0]
-    y=values[1]
-    return -(y+47)*np.sin(np.sqrt(np.abs(y+(x/2)+47)))-x*np.sin(np.sqrt(np.abs(x-(y+47))))
-
-eggHolder_min=[-512,-512]
-eggHolder_max=[512,512]
 
 
-# Function to be Minimized (Rosenbrocks Valley). Solution ->  f(x) = 0; xi = 1
-def rosenbrocks_valley(variables_values = [0,0]):
-    func_value = 0
-    last_x = variables_values[0]
-    for i in range(1, len(variables_values)):
-        func_value = func_value + (100 * math.pow((variables_values[i] - math.pow(last_x, 2)), 2)) + math.pow(1 - last_x, 2)
-    return func_value
-
-def beale_fn(x):
-	return (1.5 - x[0] + x[0]*x[1])**2 + (2.25 - x[0] + x[0]*x[1]**2)**2 + (2.625 - x[0] + x[0]*x[1]**3)**2
-
-beale_min=[-4.5,-4.5]
-beale_max=[4.5,4.5]
-
-
-def get_func_val(self, variables):
-        tmp1 = 10 * self.variable_num
-        tmp2 = 0
-        for i in range(self.variable_num):
-            tmp2 += np.power(variables[i],2)-10*np.cos(2*np.pi*variables[i])
-        return tmp1+tmp2
-
-
-
-
-gwoLoop(benchMarks.Rastrigin())
+gwoLoop(benchMarks.Ackley())
 
 # print(benchMarks.Rastrigin().fitness_function([0,0]))
