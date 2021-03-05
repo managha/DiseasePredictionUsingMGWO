@@ -31,6 +31,13 @@ class Ackley:
         return tmp1+tmp2
 
 
+# Minimum value : f(x1,...,xn)=f(0,...,0)=0
+class Sphere:
+    max_values = np.array([1000] * 2)  # nearly inf
+    min_values = np.array([-1000] * 2)  # nearly inf
+
+    def fitness_function(self, variables):
+        return np.sum(np.square(variables))
 
 # Function to be Minimized (Rosenbrocks Valley). Solution ->  f(x) = 0; xi = 1
 class RosenBrocksValley:
@@ -64,6 +71,52 @@ class GoldsteinPrice:
         tmp2 = (30+(np.power(2*variables[0]-3*variables[1],2)*(18-32*variables[0]+12*np.power(variables[0],2)+48*variables[1]-36*variables[0]*variables[1]+27*np.power(variables[1],2))))
         return tmp1*tmp2
 
+#Minimum value: f(1,3)=0
+class Booth:
+
+    max_values = np.array([10.]*2)
+    min_values = np.array([-10.]*2)
+
+    def fitness_function(self, variables):
+        tmp1 = np.power(variables[0]+2*variables[1]-7,2)
+        tmp2 = np.power(2*variables[0]+variables[1]-5,2)
+        return tmp1+tmp2
+
+#Minimum value: f(-10,1)=0
+class BukinN6:
+
+    max_values = np.array([-5.,3.])
+    min_values = np.array([-15.,-3.])
+
+    def fitness_function(self, variables):
+        tmp1 = 100*np.sqrt(np.absolute(variables[1]-0.01*np.power(variables[1],2)))
+        tmp2 = 0.01*np.absolute(variables[0]+10)
+        return tmp1+tmp2
+
+
+# Minimum value: f(0,0)=0
+class Matyas:
+
+    max_values = np.array([10.]*2)
+    min_values = np.array([-10.]*2)
+
+    def fitness_function(self, variables):
+        tmp1 = 0.26*(np.power(variables[0],2)+np.power(variables[1],2))
+        tmp2 = 0.48*variables[0]*variables[1]
+        return tmp1-tmp2
+
+# Minimum value: f(1,1)=0
+class LeviN13:
+
+    max_values = np.array([10.]*2)
+    min_values = np.array([-10.]*2)
+
+
+    def fitness_function(self, variables):
+        tmp1 = np.power(np.sin(3*np.pi*variables[0]),2)
+        tmp2 = np.power(variables[0]-1,2)*(1+np.power(np.sin(3*np.pi*variables[1]),2))
+        tmp3 = np.power(variables[1]-1,2)*(1+np.power(np.sin(2*np.pi*variables[1]),2))
+        return tmp1+tmp2+tmp3
 
 #Minima ->  f(x, y) = -959.6407; x=512, y=404.2319
 class EggHolder:

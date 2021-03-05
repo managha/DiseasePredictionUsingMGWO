@@ -125,6 +125,6 @@ def gwoLoop(benchMarkObject):
 
 
 
-gwoLoop(benchMarks.Ackley())
+gwoLoop(benchMarks.LeviN13())
 
 # print(benchMarks.Rastrigin().fitness_function([0,0]))
