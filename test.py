@@ -125,6 +125,6 @@ def gwoLoop(benchMarkObject):
 
 
 
-gwoLoop(benchMarks.SchafferN4())
+gwoLoop(benchMarks.Quartic())
 
 # print(benchMarks.Rastrigin().fitness_function([0,0]))
