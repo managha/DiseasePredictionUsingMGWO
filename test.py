@@ -88,7 +88,7 @@ def gwoLoop(benchMarkObject):
                 r2 = random.random()  # r2 is a random number in [0,1]
 
                 A1 = 2 * a * r1 - a
-                if A1<0:
+                if abs(A1)>1:
                     A1=2*2*r1-2
                 C1 = 2 * r2
                 
@@ -99,7 +99,7 @@ def gwoLoop(benchMarkObject):
                 r2 = random.random()
 
                 A2 = 2 * a * r1 - a
-                if A2<0:
+                if abs(A2)>1:
                     A2=2*2*r1-2
                 C2 = 2 * r2
         
@@ -110,7 +110,7 @@ def gwoLoop(benchMarkObject):
                 r2 = random.random()
 
                 A3 = 2 * a * r1 - a
-                if A3<0:
+                if abs(A3)>1:
                     A3=2*2*r1-2
                 C3 = 2 * r2
                 
@@ -125,6 +125,6 @@ def gwoLoop(benchMarkObject):
 
 
 
-gwoLoop(benchMarks.Quartic())
+gwoLoop(benchMarks.EggHolder())
 
 # print(benchMarks.Rastrigin().fitness_function([0,0]))
