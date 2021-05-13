@@ -127,4 +127,3 @@ def gwoLoop(benchMarkObject):
 
 gwoLoop(benchMarks.EggHolder())
 
-# print(benchMarks.Rastrigin().fitness_function([0,0]))
