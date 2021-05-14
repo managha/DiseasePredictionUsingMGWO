@@ -101,8 +101,6 @@ class Ackley:
         return tmp1+tmp2
 
 
-
-
 #Minima ->  f(x, y) = -959.6407; x=512, y=404.2319
 class EggHolder:
     min_values=[-512,-512]

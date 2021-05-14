@@ -78,7 +78,7 @@ def gwoLoop(benchMarkObject):
 
 
         
-        a = 2 - 2 * ((l / Max_iter)**2) # a decreases linearly fron 2 to 0
+        a = 2 - 2 * ((l / Max_iter)) # a decreases linearly fron 2 to 0
         
         # Update the Position of search agents including omegas
         for i in range(0, SearchAgents_no):
@@ -88,8 +88,8 @@ def gwoLoop(benchMarkObject):
                 r2 = random.random()  # r2 is a random number in [0,1]
 
                 A1 = 2 * a * r1 - a
-                if A1<0:
-                    A1=2*2*r1-2
+                #if A1<0:
+                #    A1=2*2*r1-2
                 C1 = 2 * r2
                 
                 D_alpha = abs(C1 * alpha[j] - Positions[i][j])
@@ -99,8 +99,8 @@ def gwoLoop(benchMarkObject):
                 r2 = random.random()
 
                 A2 = 2 * a * r1 - a
-                if A2<0:
-                    A2=2*2*r1-2
+                #if A2<0:
+                #    A2=2*2*r1-2
                 C2 = 2 * r2
         
                 D_beta = abs(C2 * beta[j] - Positions[i][j])
@@ -110,8 +110,8 @@ def gwoLoop(benchMarkObject):
                 r2 = random.random()
 
                 A3 = 2 * a * r1 - a
-                if A3<0:
-                    A3=2*2*r1-2
+                #if A3<0:
+                #    A3=2*2*r1-2
                 C3 = 2 * r2
                 
                 D_delta = abs(C3 * delta[j] - Positions[i][j])
@@ -125,6 +125,6 @@ def gwoLoop(benchMarkObject):
 
 
 
-gwoLoop(benchMarks.Quartic())
+gwoLoop(benchMarks.Matyas())
 
 # print(benchMarks.Rastrigin().fitness_function([0,0]))
